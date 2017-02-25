@@ -1,11 +1,8 @@
-AuthUserFile /kunden/315406_70794/rp-hosting/12801/62801/typo3cms/.htpasswd
-AuthName "Passwortgeschuetzter Bereich: Deutschlandstipendium"
+AuthUserFile /path-to/.htpasswd
+AuthName "Protected Area"
 AuthType Basic
-require user testds
-require user verena.fauser
-require user wiltrud.gekeler
-require user sylvia.knutzen
+require user username
 
 RewriteEngine On 
 RewriteCond %{SERVER_PORT} 80 
-#RewriteRule ^(.*)$ https://www.hfwu.de/ds/$1 [R,L]
+#RewriteRule ^(.*)$ https://mydonain.com/ds/$1 [R,L]
