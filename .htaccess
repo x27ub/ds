@@ -5,4 +5,4 @@ require user username
 
 RewriteEngine On 
 RewriteCond %{SERVER_PORT} 80 
-#RewriteRule ^(.*)$ https://mydonain.com/ds/$1 [R,L]
+#RewriteRule ^(.*)$ https://mydomain.com/ds/$1 [R,L]
