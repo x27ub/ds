@@ -11,7 +11,7 @@ require_once (dirname(__FILE__).'/class_dbOperations.php');
 //require_once (dirname(__FILE__).'/class_createConfigArray.php');
 
 $suffix="_01";
-$tableName = "tx_deStipendium";
+$tableName = "tx_applicants";
 $fid = 1;
 
 $doc = new htmlAssemble();
@@ -19,17 +19,11 @@ $doc->htmlhead();
 
 //db params
 $dbConfig = array();
-$dbConfig['dbhost'] =  '127.0.0.3';
+$dbConfig['dbhost'] =  '127.0.0.1';
 $dbConfig['dbuser'] =  'db315406_4';
-$dbConfig['dbpass'] =  'kyp1mYW3R7';
+$dbConfig['dbpass'] =  'pass';
 $dbConfig['dbname'] =  'db315406_4';
 
-//db params ?possible to define an array??
-//$dbConfig = array();
-//$dbConfig['dbhost'] =  '127.0.0.1';
-//$dbConfig['dbuser'] =  'webroot';
-//$dbConfig['dbpass'] =  '5deY7FCqmt';
-//$dbConfig['dbname'] =  'dsform';
 
 // variables needed, config array and action
 $_POST['submit'] = (isset($_POST['submit']) ? $_POST['submit'] : NULL);
@@ -102,8 +96,8 @@ $countryCodes = array('AFG'=>'Afghanistan','ALA'=>'&Aring;land','ALB'=>'Albania'
 //$stipendium = "stipend orgnization"; $stipendium_name = "stipend name"; $stipendium_hoehe = "350 &euro;";
 $status =  array(1=>'Bewerbung akzeptiert',0=>'Bewerbung abgelehnt',2=>'Ausschluss Quotenregelung');
 $a_yesno = array('0'=>'bitte ausw&auml;hlen', 'j'=>'ja','n'=>'nein');
-$a_gender = array('x'=>'x','m'=>'m&auml;nnlich','f'=>'weiblich');
-$a_gender2 = array('0'=>'0','1'=>'1','2'=>'2');
+$a_sex = array('x'=>'x','m'=>'m&auml;nnlich','f'=>'weiblich');
+$a_sex2 = array('0'=>'0','1'=>'1','2'=>'2');
 $a_zerotwo = array('0'=>'0','0.2'=>'0.2','0.4'=>'0.4','0.6'=>'0.6');
 $a_title = array('0'=>'bitte ausw&auml;hlen','Fr.'=>'Frau','Hr.'=>'Herr');
 $a_stg = array('no subject chosen'=>'bitte ausw&auml;hlen','Accounting, Auditing und Taxation'=>'Accounting, Auditing und Taxation','Agrarwirtschaft'=>'Agrarwirtschaft','Automobilwirtschaft'=>'Automobilwirtschaft','Automotive Management'=>'Automotive Management','Betriebswirtschaft'=>'Betriebswirtschaft','Energie- und Ressourcenmanagement'=>'Energie- und Ressourcenmanagement','Gesundheits- und Tourismusmanagement'=>'Gesundheits- und Tourismusmanagement','Immobilienmanagement'=>'Immobilienmanagement','Immobilienwirtschaft'=>'Immobilienwirtschaft','International Finance'=>'International Finance','International Master of Landscape Architecture'=>'International Master of Landscape Architecture','Internationales Finanzmanagement'=>'Internationales Finanzmanagement','International Management'=>'International Management','Landschaftsarchitektur'=>'Landschaftsarchitektur','Landschaftsplanung & Naturschutz'=>'Landschaftsplanung & Naturschutz','Nachhaltiges Produktmanagement'=>'Nachhaltiges Produktmanagement','Pferdewirtschaft'=>'Pferdewirtschaft','Prozessmanagement'=>'Prozessmanagement','Stadtplanung'=>'Stadtplanung','Umweltschutz'=>'Umweltschutz','Unternehmensf&uuml;hrung'=>'Unternehmensf&uuml;hrung','Unternehmensrestrukturierung und Insolvenzmanagement'=>'Unternehmensrestrukturierung und Insolvenzmanagement','Volkswirtschaftslehre'=>'Volkswirtschaftslehre','Wirtschaftsrecht/Business Law'=>'Wirtschaftsrecht/Business Law');
@@ -201,7 +195,7 @@ $fieldsets = array('Record Info' => array('hidden' =>
         'Geschlecht' =>
 				array('select' =>
 						array(	'name'=>'geschl',
-								'options'=> $a_gender,
+								'options'=> $a_sex,
 								'class'=>'sel_w1',
 								'@#db' => 'VARCHAR( 10 ) NOT NULL',																								
 						),
@@ -1039,7 +1033,7 @@ $fieldsets = array('Record Info' => array('hidden' =>
 										'Geschlecht' =>
 											array('select' =>
 												array(	'name'=>'s_geschl',
-														'options'=> $a_gender2,
+														'options'=> $a_sex2,
 														'class'=>'sel_w1',
 														'@#db' => 'VARCHAR( 2 ) NOT NULL',																								
 												),
@@ -1156,7 +1150,7 @@ $fieldsets = array('Record Info' => array('hidden' =>
 											'Geschlecht' =>  
 												array(	'select' =>
 													array(	'name'=>'f_geschl',
-															'options'=> $a_gender,
+															'options'=> $a_sex,
 															'class'=>'sel_w1',
 															'@#db' => 'VARCHAR( 4 ) NOT NULL',								
 													),
@@ -1400,7 +1394,7 @@ echo "</pre>";
 //if($confArray->checkFormId()) $fid = $confArray->checkFormId();
 //else $fid = 1; 
 
-$path = "http://hfwu.de/uploads/tx_powermail/files/deutschlandstipendium/";
+$path = "http://mydomain.com/uploads/";
 $dbOp = new dbOperations($dbConfig,$fieldsets,$path,$tableName,$suffix,$salt="I|1Tofu+-Wev>w.W=S\$Y+5$44HC;[<",$fid);
 $form = new createForms($self,$fieldsets,$icon);
 

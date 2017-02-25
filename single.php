@@ -9,18 +9,17 @@ require_once (dirname(__FILE__).'/class_dbOperations.php');
 require_once (dirname(__FILE__).'/functions.php');
 
 $suffix="";
-$tableName = "tx_deStipendium";
+$tableName = "tx_forms";
 $icon = "*";  // default value is star, defined here because of $icon in array. Try to change $icon to 1 or yes
 
 $doc = new htmlAssemble($doctype = FALSE, $htmltype="", $title="Applicant Administration");
 $doc->htmlhead();
-global $base;
 
 $csv = ((IsSet($csv)) ? $csv : "" );
 $info = ((IsSet($info)) ? $info : $info['html'] = "");
 $content = <<< EOC
 <div class="main">\n<h1>Administration Form Applicants</h1>
-<p><a href="$base/">Back</a> to list view.</p>
+<p><a href="/">Back</a> to list view.</p>
 </div>\n
 EOC;
 

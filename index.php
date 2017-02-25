@@ -20,8 +20,8 @@ $script = "single.php";
 // the links to the sponor's form
 $links_spons = <<< EOLS
 <div class="links">
-<h1 class="links">Zur F&ouml;rderer Bearbeitermaske</h1>
-<p class="links"><a class="links" href="list_sponsors.php">Listenansicht</a><a class="links" href="sponsors.php">Einzelansicht</a></p>
+<h1 class="links">Sponsor's Editing Form</h1>
+<p class="links"><a class="links" href="list_sponsors.php">List View</a><a class="links" href="sponsors.php">Individual View</a></p>
 </div>
 <hr>\n
 EOLS;
@@ -52,16 +52,16 @@ $options2 = $optsa . $optnosel .$optsb;
 $doc = new htmlAssemble();
 $doc->htmlhead();
 print $links_spons;
-/*
+
 date_default_timezone_set('CET');
 echo "<p>".date("Y/m/d H:i:s")."</p>";
 $form = "%Y/%m/%d %H:%M:%s";
 $d = strftime($form, 0);
 echo "<p>$d</p>";
-*/
+
 // the starting form
 $selectionForm = <<< EOF
-<h1>Bearbeitungsformular Bewerber</h1>
+<h1>Editing Form Aplicants</h1>
 <div>
 <form name="selection" action="listing.php" method="get">
 <div>

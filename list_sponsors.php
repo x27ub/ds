@@ -20,8 +20,8 @@ $script = "sponsors.php";
 // the links to the applicant's form
 $links_appl = <<< EOLS
 <div class="links">
-<h1 class="links">Zur Bewerber Bearbeitermaske</h1>
-<p class="links"><a class="links" href="/ds/">Listenansicht</a><a class="links" href="single.php">Einzelansicht</a></p>
+<h1 class="links">Applicants Editing Form</h1>
+<p class="links"><a class="links" href="/ds/">List View</a><a class="links" href="single.php">Individual View</a></p>
 </div>
 <hr>\n
 EOLS;
@@ -64,7 +64,7 @@ echo "<p>$d</p>";
 
 // the starting form
 $selectionForm = <<< EOF
-<h1>Bearbeitungsformular F&ouml;rderer</h1>
+<h1>Editing Form Sponsors</h1>
 <div>
 <form name="selection" action="listing.php" method="get">
 <div>

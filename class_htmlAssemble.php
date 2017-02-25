@@ -23,7 +23,7 @@ class htmlAssemble {
 		);
 	}
 	
-	public function htmlhead($doctype = FALSE, $htmltype="", $title="25 Jahre HfWU Geisslingen", $charset="iso-8859-1", $cssfile="../css/viewnavigator.css", $jsfile="../js/form.js", $csspath="", $jspath="", $media = "all") {	
+	public function htmlhead($doctype = FALSE, $htmltype="", $title="Applicants", $charset="iso-8859-1", $cssfile="../css/form.css", $jsfile="../js/form.js", $csspath="", $jspath="", $media = "all") {	
 		$dv =$this->docvar;
 		$head_a  = $dv['doctype']."\n".$dv['htmltype']."\n<head>\n<title>".$dv['title']."</title>\n";
 		$head_a .= "<meta charset=\"".$dv['charset']."\">\n";

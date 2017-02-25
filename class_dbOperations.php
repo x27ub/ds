@@ -1,7 +1,7 @@
 <?php
 
 class dbOperations {
-	private $dbConfig = array('dbhost'=>'127.0.0.1','dbuser'=>'testing','dbpass'=>'fXVp5EcCVAjxfJtA','dbname'=>'testing');
+	private $dbConfig = array('dbhost'=>'127.0.0.1','dbuser'=>'testing','dbpass'=>'pass','dbname'=>'testing');
 	private $host;
 	private $user;
 	private $pass;

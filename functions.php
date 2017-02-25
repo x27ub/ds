@@ -257,7 +257,7 @@ $fieldset_v  = array('Record Info' => array('hidden' =>
         'Geschlecht' =>
 				array('select' =>
 						array(	'name'=>'geschl',
-								'options'=> $geschl, //$a_gender,
+								'options'=> $geschl, //$a_sex,
 								'class'=>'sel_w1',
 								'@#db' => 'VARCHAR( 10 ) NOT NULL',																								
 						),
@@ -1094,7 +1094,7 @@ $fieldset_v  = array('Record Info' => array('hidden' =>
 										'Geschlecht' =>
 											array('select' =>
 												array(	'name'=>'s_geschl',
-														'options'=> $s_geschl, //$a_gender2,
+														'options'=> $s_geschl, //$a_sex2,
 														'class'=>'sel_w1',
 														'@#db' => 'VARCHAR( 2 ) NOT NULL',																								
 												),
@@ -1298,7 +1298,7 @@ $fieldset_spons_v = array('Record Info' => array('hidden' =>
 											'Geschlecht' =>  
 												array(	'select' =>
 													array(	'name'=>'f_geschl',
-															'options'=> $f_geschl, //$a_gender,
+															'options'=> $f_geschl, //$f_sex,
 															'class'=>'sel_w1',
 															'@#db' => 'VARCHAR( 4 ) NOT NULL',								
 													),
