@@ -14,7 +14,7 @@ if(empty($SID)) session_start() or die('Could not start session');
 $_SESSION['sid'] = $SID;
 
 $suffix="";
-$tableName = "tx_deStipendium";
+$tableName = "tx_forms";
 $script = "single.php";
 
 // the links to the sponor's form
