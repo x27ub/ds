@@ -14,7 +14,7 @@ if(empty($SID)) session_start() or die('Could not start session');
 $_SESSION['sid'] = $SID;
 
 $suffix="";
-$tableName = "tx_deFoerderer";
+$tableName = "tx_sponsors";
 $script = "sponsors.php";
 
 // the links to the applicant's form
