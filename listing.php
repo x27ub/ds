@@ -25,6 +25,7 @@ $sortc = isset($_GET['sortc']) ? $_GET['sortc'] : NULL;
 $sense = isset($_GET['sense']) ? $_GET['sense'] : NULL;
 $sorting = $sb = $sc = $fields = $where = "";
 $header = "";
+$goback = "<a href=\"javascript:history.back();\">Go back</a>";
 
 if ($sorta) {
 	$sorting .= " `".$sorta."` $sense, ";
@@ -64,32 +65,38 @@ if ($query_no OR $query_no == 0) {
 					//$sorting = "";
 					$where = " `hidden` = 0 AND `deleted` = 0 ";
 					$header = "<h1>F&ouml;rderer Liste</h1>";
+					$header .= $goback;
 					break;
 				case 1:
 					$fields = " `mat_bew_nr`,`name`, `vorname`, `note_rangliste`, `gruppe` ";
 					$sorting = "`note_rangliste` $sense " . $sb . $sc;
 					$where = "`status` = 1"; // need to be =1
 					$header = "<h1>List 1: mat_bew_nr, Name, Vorname, note_rangliste, Gruppe where Status = 1 and no sorting</h1>";
+					$header .= $goback;
 					break;
 				case 2:
 					$fields = " `mat_bew_nr`,`name`, `vorname`, `stg_kuerzel`, `note_rangliste`, `migration`, `moegl_bew_zeitraum`, `gruppe` ";
 					$sorting = "`stg_kuerzel` $sense, `note_rangliste` $sense "  . $sb . $sc;
 					$where = "`status` = 1"; // need to be =1					
 					$header = "<h1>List 2: mat_bew_nr, Name, Vorname, stg_kuerzel, note_rangliste, migration, moegl_bew_zeitraum, Gruppe where Status = 1 with sorting stg_kuerzel, note_rangliste</h1>";
+					$header .= $goback;
 					break;
 				case 3:
 					$fields = " `mat_bew_nr`,`name`, `vorname`, `stg_kuerzel`, `note_rangliste`, `migration`, `moegl_bew_zeitraum` ";
 					$sorting = "`note_rangliste` $sense "  . $sb . $sc;
 					$where = "`status` = 1 AND (stip_dauer < moegl_bew_zeitraum)";// change <= to <
 					$header = "<h1>List 3: mat_bew_nr, Name, Vorname, stg_kuerzel, note_rangliste, migration, moegl_bew_zeitraum where Status = 1 and stip_dauer < moegl_bew_zeitraum and with sorting note_rangliste</h1>";
+					$header .= $goback;
 					break;
 				case 4:
 					$fields = " `gruppe`, `mat_bew_nr`, `name`, `vorname`, `stg_kuerzel`, `note_rangliste`, `moegl_bew_zeitraum`, `stip_dauer`, `bew_ende`, `bew_beginn`, `zweck_stip`";
 					$where = " `bew` = 'ja'";
 					$header = "<h1>Gruppe, mat_bew_nr, Name, Vorname, stg_kuerzel, note_rangliste, moegl_bew_zeitraum, stip_dauer, bew_ende, bew_beginn, zweck_stip WHERE bew=ja</h1>";
+					$header .= $goback;
 					break;
 				case 5:
 					$header = "<h1>List 4: Free List</h1>";
+					$header .= $goback;
 					break;
 			} 
 } else $query_no = "";
