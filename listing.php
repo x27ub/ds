@@ -10,7 +10,7 @@ require_once (dirname(__FILE__).'/class_dbOperations.php');
 require_once (dirname(__FILE__).'/functions.php');
 
 //$suffix="";
-//$tableName = "tx_deStipendium";
+//$tableName = "tx_applicants";
 
 $doc = new htmlAssemble();
 $doc->htmlhead();
