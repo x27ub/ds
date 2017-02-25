@@ -9,7 +9,7 @@ require_once (dirname(__FILE__).'/class_dbOperations.php');
 require_once (dirname(__FILE__).'/functions.php');
 
 $suffix="";
-$tableName = "tx_deFoerderer";
+$tableName = "tx_sponsors";
 $icon = "*";  // default value is star, defined here because of $icon in array. Try to change $icon to 1 or yes
 $fid = "1";
 $pid = $_SERVER['SCRIPT_NAME'];
