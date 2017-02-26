@@ -10,13 +10,14 @@ require_once (dirname(__FILE__).'/functions.php');
 
 $suffix="";
 $tableName = "tx_sponsors";
+$applicantsTable = "tx_applicants";
+$sponsorsTable = "tx_sponsors";
 $icon = "*";  // default value is star, defined here because of $icon in array. Try to change $icon to 1 or yes
 $fid = "1";
 $pid = $_SERVER['SCRIPT_NAME'];
 
 $doc = new htmlAssemble($doctype=FALSE, $htmltype="", $title="Sponsor Administration");
 $doc->htmlhead();
-global $base;
 
 
 date_default_timezone_set('CET');
@@ -29,7 +30,7 @@ $csv = ((IsSet($csv)) ? $csv : "" );
 $info = ((IsSet($info)) ? $info : $info['html'] = "");
 $content = <<< EOC
 <div class="main">\n<h1>Administration Form Sponsors</h1>
-<p><a href="$base/list_sponsors.php">Back</a> to list view.</p>
+<p><a href="list_sponsors.php">Back</a> to list view.</p>
 </div>\n
 EOC;
 
@@ -42,7 +43,7 @@ $maxuid = $a_vals['MAX(`uid`)'];
 $max = $max_array['max'];
 $diff = $maxuid - $max + 1;
 
-//$test = getSponsors();
+//$test = getSponsors($sponsorsTable);
 //echo "<pre>";
 //print_r($_POST);
 //print_r($test);
@@ -51,7 +52,7 @@ $diff = $maxuid - $max + 1;
 
 
 if ($maxuid > 0) {
-	$return = fillForm(1,$fieldset_spons,$tableName);
+	$return = fillForm(1,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 	for ($i=0; $i<count($return['uploads']); $i++) {
 		$varname = "upfield";//$return['uploads'][$i];
 		$varname = $varname.$i;
@@ -82,7 +83,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 		if (!$maxuid) {
 			$maxuid = $max_array['max'];
 			$m = $maxuid+1;
-			$return = fillForm($m,$fieldset_spons,$tableName);
+			$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 			$filledfields = $return['fields'];
 		} else {
 			$maxuid = 0;
@@ -136,7 +137,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 			$filledfields = $fieldset_spons;
 			$color = "red";
 		} else {
-			$return = fillForm($m,$fieldset_spons,$tableName);
+			$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 			$filledfields = $return['fields'];
 			if ($saved['saved'] == 0) $color = "yellow";
 			elseif ($saved['saved'] > 0) $color = "green";
@@ -195,7 +196,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 			$m = $maxuid;
 			$self = $selfbase."?id=".$m;
 		}
-		$return = fillForm($m,$fieldset_spons,$tableName);
+		$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 		$filledfields = $return['fields'];
 		$data_array = $dbOp->getDataFromDB();
 		$a_result = $dbOp->getIndividualVal($m, $upfield0);
@@ -268,7 +269,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 //			print "<p>ERROR: the variable group is empty, hence no grades have been worked out.</p>";
 //		}
 
-		$return = fillForm($m,$fieldset_spons,$tableName);
+		$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 		$filledfields = $return['fields'];
 		$color = "green";
 		//print_r($a_result);
@@ -313,7 +314,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 			$filledfields = $fieldset_spons;
 			$color = "red";
 		} else {
-			$return = fillForm($m,$fieldset_spons,$tableName);
+			$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 			$filledfields = $return['fields'];
 			if ($saved['saved'] == 0) $color = "yellow";
 			elseif ($saved['saved'] > 0) $color = "green";
@@ -364,7 +365,7 @@ if ($max_array['max'] <= 0) { // first time here OR button 'new' pressed
 			$filledfields = $fieldset_spons;
 			$color = "red";
 		} else {
-			$return = fillForm($m,$fieldset_spons,$tableName);
+			$return = fillForm($m,$fieldset_spons,$tableName,$applicantsTable,$sponsorsTable);
 			$filledfields = $return['fields'];
 			if ($saved['saved'] == 0) $color = "yellow";
 			elseif ($saved['saved'] > 0) $color = "green";

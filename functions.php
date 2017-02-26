@@ -1,6 +1,7 @@
 <?php
 require_once (dirname(__FILE__).'/variables.php');
 
+
 $now = time();
 $deltaT = (18*365*24*3600); // 18a
 $maxpoint = $now - $deltaT;
@@ -49,7 +50,7 @@ function mk_year_array($range,$negrg=FALSE) {
 
 //$list_upload = array(0=>1);
 
-function fillForm($t,$array_fields,$table,$path="",$suffix="",$salt="I|1Tofu+-Wev>w.W=S\$Y+5$44HC;[<") {
+function fillForm($t,$array_fields,$table,$applicantsTable,$sponsorsTable,$path="",$suffix="",$salt="I|1Tofu+-Wev>w.W=S\$Y+5$44HC;[<") {
 //echo "<pre>array_fields = ";
 //print_r($array_fields);
 //echo "</pre>";
@@ -87,7 +88,7 @@ function fillForm($t,$array_fields,$table,$path="",$suffix="",$salt="I|1Tofu+-We
 	$s_traeger_hs = array(0 =>'bitte ausw&auml;hlen',2=>'2');	
 	$s_abschl = array('0'=>'bitte ausw&auml;hlen','184'=>'184','284'=>'284','390'=>'390');
 	$s_bafoeg = array('0'=>'bitte ausw&auml;hlen','1'=>'1','2'=>'2');
-	$foed_id = getSponsors();
+	$foed_id = getSponsors($sponsorsTable);
 	$f_land =array('8'=>'8');
 	$f_hs_art = array('6'=>'6');
 	$f_hs=array('0'=>'bitte ausw&auml;hlen','7691'=>'7691','7692'=>'7692');
@@ -322,14 +323,14 @@ $fieldset_v  = array('Record Info' => array('hidden' =>
 // 3rd fieldset
 		'Angaben zu weiteren F&ouml;rderungen / Ausschlussgr&uuml;nde' => 
     			array(   		    			
-//    			'rechtzeitiger Eingang' =>
-//						array('select' =>
-//							array(	'name'=>'r_eingang_bew',
-//									'options'=> $r_eingang_bew, //$a_yesno,
-//									'class'=>'sel_w1',
-//									'@#db' => 'VARCHAR( 4 ) NOT NULL DEFAULT 0',								
-//							)
-//						),
+    			'rechtzeitiger Eingang' =>
+						array('select' =>
+							array(	'name'=>'r_eingang_bew',
+									'options'=> $r_eingang_bew, //$a_yesno,
+									'class'=>'sel_w1',
+									'@#db' => 'VARCHAR( 4 ) NOT NULL DEFAULT 0',								
+							)
+						),
 						'Bezug weiterer F&ouml;rderungen' =>
 						array('input' =>
 							array(	'type'=>'text',								
@@ -1532,8 +1533,8 @@ $fieldset_spons_v = array('Record Info' => array('hidden' =>
 	); // end filled array
 
 $return = array();
-if ($table==="tx_deStipendium") $return['fields'] = $fieldset_v;
-elseif ($table==="tx_deFoerderer") $return['fields'] = $fieldset_spons_v;
+if ($table===$applicantsTable) $return['fields'] = $fieldset_v;
+elseif ($table===$sponsorsTable) $return['fields'] = $fieldset_spons_v;
 else $return['fields'] = array(0=>"The variable \$table is not set.");
 //$return['fields'] = $fieldset_v;
 $return['uploads'] = $list_upload;
@@ -1565,10 +1566,10 @@ function generateLink($url=FALSE) {
 	return $link;
 }
 
-function getSponsors($a_var=FALSE) {
+function getSponsors($sponsorsTable,$a_var=FALSE) {
 	global $dbConfig, $fieldset_spons, $path, $salt, $suffix;
-	$table = "tx_deFoerderer";
-	$a_sponsors = array(0 => "F&ouml;rderer ausw&auml;hlen");
+	$table = $sponsorsTable;
+	$a_sponsors = array(0 => "Choose Sponsor");
 
 	if(!$a_var) $a_var = new dbOperations($dbConfig,$fieldset_spons,$path,$table,$suffix,$salt);
 	$val = $a_var->getValuesFromDB("f_foerderer",$table);

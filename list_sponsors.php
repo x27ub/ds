@@ -1,8 +1,8 @@
 <?php
-if($_SERVER["HTTPS"] != "on") {
-    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-    exit();
-}
+//if($_SERVER["HTTPS"] != "on") {
+//    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+//    exit();
+//}
 require_once (dirname(__FILE__).'/class_htmlAssemble.php');
 require_once (dirname(__FILE__).'/class_createForms.php');
 require_once (dirname(__FILE__).'/class_dbOperations.php');
@@ -21,7 +21,7 @@ $script = "sponsors.php";
 $links_appl = <<< EOLS
 <div class="links">
 <h1 class="links">Applicants Editing Form</h1>
-<p class="links"><a class="links" href="/ds/">List View</a><a class="links" href="single.php">Individual View</a></p>
+<p class="links"><a class="links" href="/">List View</a><a class="links" href="single.php">Individual View</a></p>
 </div>
 <hr>\n
 EOLS;

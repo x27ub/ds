@@ -1,8 +1,8 @@
 <?php
-if($_SERVER["HTTPS"] != "on") {
-    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-    exit();
-}
+//if($_SERVER["HTTPS"] != "on") {
+//    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+//    exit();
+//}
 require_once (dirname(__FILE__).'/class_htmlAssemble.php');
 require_once (dirname(__FILE__).'/class_createForms.php');
 require_once (dirname(__FILE__).'/class_dbOperations.php');
@@ -14,7 +14,7 @@ if(empty($SID)) session_start() or die('Could not start session');
 $_SESSION['sid'] = $SID;
 
 $suffix="";
-$tableName = "tx_forms";
+$tableName = "tx_applicants";
 $script = "single.php";
 
 // the links to the sponor's form
@@ -61,7 +61,7 @@ echo "<p>$d</p>";
 
 // the starting form
 $selectionForm = <<< EOF
-<h1>Editing Form Aplicants</h1>
+<h1>Editing Form Applicants</h1>
 <div>
 <form name="selection" action="listing.php" method="get">
 <div>

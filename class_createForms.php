@@ -45,6 +45,19 @@ class createForms {
 		$aString = substr($aString, 0, $length-$integer);
 		return $aString;
 	}
+	
+	function putSelected($value) {
+		$code ="=>";
+		$pos = strpos($code, $value);
+		if ($pos) return FALSE; // if $pos is false
+		else {
+			$split = eplode("\=>",$value);
+			$return = arrray();
+			$return[0] = $split[0];
+			$return[1] = $split[1];
+			return $return;
+		}
+	}
 
 	function toString($submit=FALSE,$reset=FALSE) {
 		//$chksid = isset($_POST['checksid']) ? $_POST['checksid'] : -1;
@@ -559,6 +572,13 @@ class createForms {
 			while ($config = each($thearray[$thekey][$thelabel][$thetype])) {
 				$name = $config['key'];
 				$value = $config['value'];
+				$check = $this->putSelected($value);
+				if(!$check){
+					$value = $config['value'];
+				} else {
+					$value = $check[0];
+					$value .= " selected=\"" . $check[1] . "\" ";
+				}
 				// avoid html output for db params
 				if ($name === '@#db') {
 					$return_string .= '';
